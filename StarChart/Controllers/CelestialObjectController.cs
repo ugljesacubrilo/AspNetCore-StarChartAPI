@@ -26,7 +26,7 @@ namespace StarChart.Controllers
 
             if (celestialObject == null)
             {
-                return NotFound("Celestial object not found.");
+                return NotFound();
             }
 
             celestialObject.Satellites = _context.CelestialObjects.Where(c => c.OrbitedObjectId == id).ToList();
@@ -39,9 +39,9 @@ namespace StarChart.Controllers
         {
             var celestialObjects = _context.CelestialObjects.Where(c => c.Name == name);
 
-            if (celestialObjects == null || celestialObjects.Count() == 0)
+            if (celestialObjects == null)
             {
-                return NotFound("Celestial object not found.");
+                return NotFound();
             }
 
             foreach (var celestialObject in celestialObjects)
